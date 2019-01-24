@@ -82,7 +82,8 @@ class App extends Component {
                   filteredResults={filteredResults}
                 />)
               }}/>
-
+            <Route
+            path="/characther/:id" /> 
           </Switch>
         </main>
       </div>
