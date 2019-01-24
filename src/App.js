@@ -1,61 +1,56 @@
-import React, { Component } from 'react';
-import { getCharacters } from './services/characters';
-import './App.css';
+import React, { Component } from "react";
+import { getCharacters } from "./services/characters";
+import "./App.css";
 
 class App extends Component {
   constructor(props) {
-    super(props)
-    this.allCharacters()
+    super(props);
+    this.allCharacters();
     this.state = {
       characters: [],
       query: "",
       filter: "",
       loading: true
-    }
+    };
     this.getUserSearch = this.getUserSearch.bind(this);
     this.filter = this.filter.bind(this);
   }
 
   allCharacters() {
-    getCharacters()
-      .then(data => {
-        const charactersWithId = data.map((character, id) => {
-          return {
-            ...character,
-            id: id
-          }
-        })
+    getCharacters().then(data => {
+      const charactersWithId = data.map((character, id) => {
+        return {
+          ...character,
+          id: id
+        };
+      });
 
-        this.setState({
-          characters: charactersWithId
-        })
-      })
+      this.setState({
+        characters: charactersWithId
+      });
+    });
   }
 
   getUserSearch(event) {
     const value = event.target.value;
     this.setState({
       query: value
-    })
-    this.filter()
+    });
+    this.filter();
   }
 
   filter() {
     const { characters, query } = this.state;
-    const filteredCharacters = characters.filter((character) => {
+    const filteredCharacters = characters.filter(character => {
       const characterName = character.name;
-      console.log('charactername', characterName);
-      return (
-        characterName.toLowerCase().includes(query.toLowerCase())
-          ? true
-          : false)
-    })
-    
+      return characterName.toLowerCase().includes(query.toLowerCase())
+        ? true
+        : false;
+    });
     return filteredCharacters;
   }
 
   render() {
-    const { characters } = this.state;
     const filteredResults = this.filter();
     return (
       <div className="App">
@@ -67,23 +62,18 @@ class App extends Component {
                 id="query"
                 type="text"
                 onKeyUp={this.getUserSearch}
-                placeholder="Ex: Harry Potter" />
+                placeholder="Ex: Harry Potter"
+              />
             </label>
             <ul>
-              {filteredResults.map((character) => {
+              {filteredResults.map(character => {
                 return (
-                  <li
-                    key={character.id}>
-                    <h2>
-                      {character.name}
-                    </h2>
-                    <img
-                      src={character.image}
-                      alt={character.name} />
-                    <div>
-                      {character.house}
-                    </div>
-                  </li>)
+                  <li key={character.id}>
+                    <h2>{character.name}</h2>
+                    <img src={character.image} alt={character.name} />
+                    <div>{character.house}</div>
+                  </li>
+                );
               })}
             </ul>
           </main>
