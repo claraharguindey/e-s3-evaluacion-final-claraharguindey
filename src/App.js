@@ -6,7 +6,6 @@ import { Switch, Route } from 'react-router-dom';
 import DetailPage from './components/DetailPage/index';
 import "./App.scss";
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +16,6 @@ class App extends Component {
       filter: "",
       loading: true
     };
-
     this.getUserSearch = this.getUserSearch.bind(this);
     this.filter = this.filter.bind(this);
   }
@@ -80,9 +78,10 @@ class App extends Component {
               exact
               path="/"
               render={() => {
-                return (<CharacterList
-                  filteredResults={filteredResults}
-                />)
+                return (
+                  <CharacterList
+                    filteredResults={filteredResults}
+                  />)
               }} />
 
             <Route
@@ -92,7 +91,8 @@ class App extends Component {
                   .find(character => character.id === parseInt(props.match.params.id))
                 return (
                   <DetailPage
-                    character={currentCharacter} />)
+                    character={currentCharacter}
+                  />)
               }} />
             );
           </Switch>

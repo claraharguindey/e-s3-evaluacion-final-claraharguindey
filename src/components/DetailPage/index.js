@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import PropTypes from "prop-types";
 
 class DetailPage extends Component {
     
@@ -29,6 +30,9 @@ class DetailPage extends Component {
             </div>
         );}
     }
+}
+DetailPage.propTypes = {
+    character: PropTypes.object.isRequired
 }
 
 export default DetailPage;

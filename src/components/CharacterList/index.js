@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CharacterCard from '../CharacterCard';
+import PropTypes from "prop-types";
 
 class CharacterList extends Component {
   render() {
@@ -12,4 +13,7 @@ class CharacterList extends Component {
   }
 }
 
+CharacterList.propTypes = {
+  filteredResults: PropTypes.array.isRequired
+}
 export default CharacterList;
