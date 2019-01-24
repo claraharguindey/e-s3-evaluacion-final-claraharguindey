@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getCharacters } from "./services/characters";
-import "./App.css";
+import Filter from './components/Filter';
+import "./App.scss";
 
 class App extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class App extends Component {
       filter: "",
       loading: true
     };
+
     this.getUserSearch = this.getUserSearch.bind(this);
     this.filter = this.filter.bind(this);
   }
@@ -57,14 +59,7 @@ class App extends Component {
         <header className="App-header">
           <h1>Harry Potter Characters</h1>
           <main>
-            <label htmlFor="query">
-              <input
-                id="query"
-                type="text"
-                onKeyUp={this.getUserSearch}
-                placeholder="Ex: Harry Potter"
-              />
-            </label>
+          <Filter getUserSearch={this.getUserSearch}/>
             <ul>
               {filteredResults.map(character => {
                 return (
