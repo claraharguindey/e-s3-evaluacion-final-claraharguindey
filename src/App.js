@@ -3,7 +3,9 @@ import { getCharacters } from "./services/characters";
 import Filter from './components/Filter';
 import CharacterList from './components/CharacterList';
 import { Switch, Route } from 'react-router-dom';
+import DetailPage from './components/DetailPage/index';
 import "./App.scss";
+
 
 class App extends Component {
   constructor(props) {
@@ -82,8 +84,13 @@ class App extends Component {
                   filteredResults={filteredResults}
                 />)
               }}/>
-            <Route
-            path="/characther/:id" /> 
+              <Route 
+              path="/character/:id"
+              render={(props) => {
+              return (<DetailPage
+              urlID={props.match.params.id}
+              filteredResults={filteredResults}
+              id={1} />)}}/>
           </Switch>
         </main>
       </div>
