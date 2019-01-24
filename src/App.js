@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getCharacters } from "./services/characters";
 import Filter from './components/Filter';
+import CharacterList from './components/CharacterList';
 import "./App.scss";
 
 class App extends Component {
@@ -59,18 +60,12 @@ class App extends Component {
         <header className="App-header">
           <h1>Harry Potter Characters</h1>
           <main>
-          <Filter getUserSearch={this.getUserSearch}/>
-            <ul>
-              {filteredResults.map(character => {
-                return (
-                  <li key={character.id}>
-                    <h2>{character.name}</h2>
-                    <img src={character.image} alt={character.name} />
-                    <div>{character.house}</div>
-                  </li>
-                );
-              })}
-            </ul>
+            <Filter
+              getUserSearch={this.getUserSearch}
+            />
+            <CharacterList
+              filteredResults={filteredResults}
+            />
           </main>
         </header>
       </div>
