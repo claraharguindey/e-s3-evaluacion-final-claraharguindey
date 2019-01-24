@@ -7,8 +7,10 @@ class App extends Component {
     super(props)
     this.allCharacters()
     this.state = {
-      characters: []
+      characters: [],
+      query: ""
     }
+    this.getUserSearch = this.getUserSearch.bind(this);
   }
 
   allCharacters() {
@@ -26,6 +28,15 @@ class App extends Component {
         })
       })
   }
+  
+  getUserSearch(event) {
+    const value = event.target.value;
+    this.setState( {
+      query:value
+    })
+  }
+  
+
 
   render() {
     const { characters } = this.state;
@@ -34,10 +45,13 @@ class App extends Component {
         <header className="App-header">
           <h1>Harry Potter Characters</h1>
           <main>
+          <label htmlFor="query">
+          <input id="query" type="text" onChange={this.getUserSearch} placeholder="Ex: Harry Potter"/>  
+          </label>
             <ul>
               {characters.map((character) => {
                 return (
-                  <li>
+                  <li key={character.id}>
                     <h2>
                     {character.name}
                     </h2>
