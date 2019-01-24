@@ -8,9 +8,12 @@ class App extends Component {
     this.allCharacters()
     this.state = {
       characters: [],
-      query: ""
+      query: "",
+      filter: "",
+      loading: true
     }
     this.getUserSearch = this.getUserSearch.bind(this);
+    this.filter = this.filter.bind(this);
   }
 
   allCharacters() {
@@ -28,34 +31,55 @@ class App extends Component {
         })
       })
   }
-  
+
   getUserSearch(event) {
     const value = event.target.value;
-    this.setState( {
-      query:value
+    this.setState({
+      query: value
     })
+    this.filter()
   }
-  
 
+  filter() {
+    const { characters, query } = this.state;
+    const filteredCharacters = characters.filter((character) => {
+      const characterName = character.name;
+      console.log('charactername', characterName);
+      return (
+        characterName.toLowerCase().includes(query.toLowerCase())
+          ? true
+          : false)
+    })
+    
+    return filteredCharacters;
+  }
 
   render() {
     const { characters } = this.state;
+    const filteredResults = this.filter();
     return (
       <div className="App">
         <header className="App-header">
           <h1>Harry Potter Characters</h1>
           <main>
-          <label htmlFor="query">
-          <input id="query" type="text" onChange={this.getUserSearch} placeholder="Ex: Harry Potter"/>  
-          </label>
+            <label htmlFor="query">
+              <input
+                id="query"
+                type="text"
+                onKeyUp={this.getUserSearch}
+                placeholder="Ex: Harry Potter" />
+            </label>
             <ul>
-              {characters.map((character) => {
+              {filteredResults.map((character) => {
                 return (
-                  <li key={character.id}>
+                  <li
+                    key={character.id}>
                     <h2>
-                    {character.name}
+                      {character.name}
                     </h2>
-                    <img src={character.image} alt={character.name} />
+                    <img
+                      src={character.image}
+                      alt={character.name} />
                     <div>
                       {character.house}
                     </div>
