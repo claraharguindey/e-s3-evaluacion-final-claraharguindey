@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { getCharacters } from "./services/characters";
 import Filter from './components/Filter';
 import CharacterList from './components/CharacterList';
+import { Switch, Route } from 'react-router-dom';
 import "./App.scss";
 
 class App extends Component {
@@ -59,15 +60,31 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1>Harry Potter Characters</h1>
-          <main>
-            <Filter
-              getUserSearch={this.getUserSearch}
-            />
-            <CharacterList
-              filteredResults={filteredResults}
-            />
-          </main>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => {
+                return (
+                  <Filter
+                    getUserSearch={this.getUserSearch}
+                  />)
+              }} />
+          </Switch>
         </header>
+        <main>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => {
+                return (<CharacterList
+                  filteredResults={filteredResults}
+                />)
+              }}/>
+
+          </Switch>
+        </main>
       </div>
     );
   }
