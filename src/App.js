@@ -83,14 +83,18 @@ class App extends Component {
                 return (<CharacterList
                   filteredResults={filteredResults}
                 />)
-              }}/>
-              <Route 
+              }} />
+
+            <Route
               path="/character/:id"
               render={(props) => {
-              return (<DetailPage
-              urlID={props.match.params.id}
-              filteredResults={filteredResults}
-              id={1} />)}}/>
+                const currentCharacter = filteredResults
+                  .find(character => character.id === parseInt(props.match.params.id))
+                return (
+                  <DetailPage
+                    character={currentCharacter} />)
+              }} />
+            );
           </Switch>
         </main>
       </div>

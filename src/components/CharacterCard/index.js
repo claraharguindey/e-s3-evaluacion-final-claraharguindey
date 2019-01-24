@@ -7,7 +7,7 @@ class CharacterCard extends Component {
     return (
       <React.Fragment>
         <li>
-        <Link to={`/person/${id}`}>
+        <Link to={`/character/${id}`}>
           <h2>{name}</h2>
           <img src={image} alt={name} />
           <div>{house}</div>
