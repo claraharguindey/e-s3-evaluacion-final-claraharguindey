@@ -11,8 +11,8 @@ class DetailPage extends Component {
             return <p>Loading...</p>
         } else {
             return character.alive
-            ? 'vivo'
-            : "💀";
+            ? <span>vivo</span>
+            : <span role="img" aria-label="die">💀</span>;
         }
     }
 

@@ -62,7 +62,7 @@ class App extends Component {
         ? true
         : false;
     });
-    
+
     return filteredCharacters;
   }
 
@@ -80,10 +80,9 @@ class App extends Component {
               path="/"
               render={() => {
                 return (
-                  <Filter
-                    getUserSearch={this.getUserSearch}
-                  />)
-              }} />
+                  <Filter getUserSearch={this.getUserSearch} />)
+              }}
+              />
           </Switch>
         </header>
         <main>
@@ -95,9 +94,11 @@ class App extends Component {
               render={() => {
                 return (
                   <CharacterList
-                    filteredResults={filteredResults} loading={loading}
+                    filteredResults={filteredResults} 
+                    loading={loading}
                   />)
-              }} />
+              }} 
+              />
 
             <Route
               path="/character/:id"
@@ -105,10 +106,9 @@ class App extends Component {
                 const currentCharacter = filteredResults
                   .find(character => character.id === parseInt(props.match.params.id))
                 return (
-                  <DetailPage
-                    character={currentCharacter}
-                  />)
-              }} />
+                  <DetailPage character={currentCharacter} />)
+              }} 
+              />
 
           </Switch>
         </main>
