@@ -24,7 +24,7 @@ class DetailPage extends Component {
             return (
                 <div className="detail__wrapper">
                     <h1 className="detail__title">{character.name}</h1>
-                    <img
+                    <img 
                         className="detail__img"
                         src={character.image}
                         alt={character.name} />
