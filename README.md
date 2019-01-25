@@ -19,5 +19,5 @@ This website was built with ReactJS and works to this open API 👉 https://hp-a
 
 He desarrollado esta website usando ReactJS. Funciona gracias a esta API 👉 https://hp-api.herokuapp.com/
 <p align="center">
-✨
+✨👩🏻‍💻✨
 </p>
