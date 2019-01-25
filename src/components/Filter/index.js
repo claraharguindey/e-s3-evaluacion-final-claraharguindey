@@ -10,8 +10,9 @@ class Filter extends Component {
           className="App__header--input"
           id="query"
           type="text"
-          onKeyUp={this.props.getUserSearch}
+          onChange={this.props.getUserSearch}
           placeholder="Ex: Harry Potter"
+          value={this.props.query}
         />
       </label>);
   }

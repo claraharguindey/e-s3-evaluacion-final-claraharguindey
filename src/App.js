@@ -68,7 +68,7 @@ class App extends Component {
 
   render() {
     const filteredResults = this.filterCharacters();
-    const { loading } = this.state;
+    const { loading, query } = this.state;
 
     return (
       <div className="App">
@@ -82,7 +82,7 @@ class App extends Component {
               path="/"
               render={() => {
                 return (
-                  <Filter getUserSearch={this.getUserSearch} />)
+                  <Filter getUserSearch={this.getUserSearch} query={query} />)
               }}
             />
           </Switch>
