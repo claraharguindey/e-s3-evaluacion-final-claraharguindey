@@ -5,7 +5,7 @@
 
 ### Find your favorites characters
 
-This website was built with ReactJS and works to this open API 👉 https://hp-api.herokuapp.com/
+This website was built with ReactJS and it works thanks to this open API 👉 https://hp-api.herokuapp.com/
 
 <p align="center">
 <img src="https://i.gifer.com/GCrD.gif"/>
