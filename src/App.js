@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { getCharacters } from "./services/characters";
+import { Switch, Route } from 'react-router-dom';
+import { getCharactersFromAPI } from "./services/characters";
 import Filter from './components/Filter';
 import CharacterList from './components/CharacterList';
-import { Switch, Route } from 'react-router-dom';
 import DetailPage from './components/DetailPage/index';
 import "./App.scss";
 
@@ -10,41 +10,51 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      characters: [],
+      characters: this.setCharacters(),
       query: "",
-      filter: "",
       loading: true
     };
     this.getUserSearch = this.getUserSearch.bind(this);
-    this.filter = this.filter.bind(this);
+    this.filterCharacters = this.filterCharacters.bind(this);
+  }
+
+  setCharacters() {
+    const storedCharacters = localStorage.getItem('characters');
+    if (!storedCharacters) {
+      return []
+    } else {
+      return JSON.parse(storedCharacters);
+    }
   }
 
   componentDidMount() {
-    getCharacters()
-    .then(data => {
-      const charactersWithId = data.map((character, id) => {
-        return {
-          ...character,
-          id: id
-        };
-      });
+    getCharactersFromAPI()
+      .then(characters => {
+        const charactersWithId = characters.map((character, id) => {
+          return {
+            ...character,
+            id: id
+          };
+        });
 
-      this.setState({
-        characters: charactersWithId,
-        loading: false
+        localStorage.setItem('characters', JSON.stringify(charactersWithId));
+
+        this.setState({
+          characters: charactersWithId,
+          loading: false
+        });
       });
-    });
   }
 
   getUserSearch(event) {
-    const value = event.target.value;
+    const userQuery = event.target.value;
     this.setState({
-      query: value
+      query: userQuery
     });
-    this.filter();
+    this.filterCharacters();
   }
 
-  filter() {
+  filterCharacters() {
     const { characters, query } = this.state;
     const filteredCharacters = characters.filter(character => {
       const characterName = character.name;
@@ -52,13 +62,14 @@ class App extends Component {
         ? true
         : false;
     });
+    
     return filteredCharacters;
   }
 
   render() {
-    const filteredResults = this.filter();
-    const {loading} = this.state;
-    
+    const filteredResults = this.filterCharacters();
+    const { loading } = this.state;
+
     return (
       <div className="App">
         <header className="App-header">
@@ -84,7 +95,7 @@ class App extends Component {
               render={() => {
                 return (
                   <CharacterList
-                    filteredResults={filteredResults} loading ={loading}
+                    filteredResults={filteredResults} loading={loading}
                   />)
               }} />
 
@@ -98,7 +109,7 @@ class App extends Component {
                     character={currentCharacter}
                   />)
               }} />
-            );
+
           </Switch>
         </main>
       </div>

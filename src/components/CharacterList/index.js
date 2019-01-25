@@ -3,13 +3,16 @@ import CharacterCard from '../CharacterCard';
 import PropTypes from "prop-types";
 
 class CharacterList extends Component {
+
   render() {
-    if (this.props.loading) {
+    const { loading, filteredResults} = this.props;
+    
+    if (loading) {
       return <p>Loading...</p>
     }
     else {
       return (<ul>
-        {this.props.filteredResults.map(character => {
+        {filteredResults.map(character => {
           return (
             <CharacterCard character={character} key={character.id} />)
         })}
@@ -19,6 +22,7 @@ class CharacterList extends Component {
 }
 
 CharacterList.propTypes = {
+  loading: PropTypes.bool.isRequired,
   filteredResults: PropTypes.array.isRequired
 }
 export default CharacterList;

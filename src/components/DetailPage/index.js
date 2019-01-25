@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 class DetailPage extends Component {
     
-    isAlive(){
+    characterState(){
         const { character } = this.props;
         return character.alive
         ? 'vivo'
@@ -12,25 +12,23 @@ class DetailPage extends Component {
     }
 
     render() {
-        const { character } = this.props;       
-        if (!character){
-            return <p>Loading...</p>
-        } else{
+        const { name, image, house, yearOfBirth, patronus } = this.props.character;       
+
         return (
             <div>
                 <Link to="/">
                 Go back
                 </Link>
-                <h1>{character.name}</h1>
-                <img src={character.image} alt={character.name} />
-                <div>Casa: {character.house}</div>
-                <div>Nacimiento: {character.yearOfBirth}</div>
-                <div>Patronus: {character.patronus}</div>
-                <div>Estado: {this.isAlive()}</div>
+                <h1>{name}</h1>
+                <img src={image} alt={name} />
+                <div>Casa: {house}</div>
+                <div>Nacimiento: {yearOfBirth}</div>
+                <div>Patronus: {patronus}</div>
+                <div>Estado: {this.characterState()}</div>
             </div>
         );}
     }
-}
+
 DetailPage.propTypes = {
     character: PropTypes.object.isRequired
 }
