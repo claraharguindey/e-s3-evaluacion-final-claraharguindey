@@ -15,6 +15,9 @@
         .list__item--img{
             filter: grayscale(0%);
         }
+        .list__item--title{
+            color: gray;
+        }
     }
 }
 
@@ -31,4 +34,6 @@
     color: black;
     text-decoration: none;
     margin-bottom: 20px;
+    font-weight: 300;
+
 }
