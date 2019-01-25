@@ -4,12 +4,17 @@ import PropTypes from "prop-types";
 
 class CharacterList extends Component {
   render() {
-    return (<ul>
-      {this.props.filteredResults.map(character => {
-        return (
-          <CharacterCard character={character} key={character.id} />)
-      })}
-    </ul>);
+    if (this.props.loading) {
+      return <p>Loading...</p>
+    }
+    else {
+      return (<ul>
+        {this.props.filteredResults.map(character => {
+          return (
+            <CharacterCard character={character} key={character.id} />)
+        })}
+      </ul>)
+    }
   }
 }
 

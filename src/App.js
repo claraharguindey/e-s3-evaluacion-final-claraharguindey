@@ -9,7 +9,6 @@ import "./App.scss";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.allCharacters();
     this.state = {
       characters: [],
       query: "",
@@ -20,8 +19,9 @@ class App extends Component {
     this.filter = this.filter.bind(this);
   }
 
-  allCharacters() {
-    getCharacters().then(data => {
+  componentDidMount() {
+    getCharacters()
+    .then(data => {
       const charactersWithId = data.map((character, id) => {
         return {
           ...character,
@@ -30,7 +30,8 @@ class App extends Component {
       });
 
       this.setState({
-        characters: charactersWithId
+        characters: charactersWithId,
+        loading: false
       });
     });
   }
@@ -56,6 +57,8 @@ class App extends Component {
 
   render() {
     const filteredResults = this.filter();
+    const {loading} = this.state;
+    
     return (
       <div className="App">
         <header className="App-header">
@@ -73,6 +76,7 @@ class App extends Component {
           </Switch>
         </header>
         <main>
+
           <Switch>
             <Route
               exact
@@ -80,7 +84,7 @@ class App extends Component {
               render={() => {
                 return (
                   <CharacterList
-                    filteredResults={filteredResults}
+                    filteredResults={filteredResults} loading ={loading}
                   />)
               }} />
 
