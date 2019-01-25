@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import { getCharactersFromAPI } from "./services/characters";
 import Filter from './components/Filter';
 import CharacterList from './components/CharacterList';
@@ -73,7 +73,9 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App__header">
+        <Link to="/">
           <h1 className="App__header--title">Harry Potter characters</h1>
+        </Link>
           <Switch>
             <Route
               exact
