@@ -7,10 +7,15 @@
   background: linear-gradient(124deg, #2a2a2a, #ffffff, #909090, #dbdbda, #0f0f0f, #909292, #7d7c80, #b1afb1, #f0eded);
   background-size: 1800% 1800%;
   animation: rainbow 18s ease infinite;  
+  font-family: 'Roboto', sans-serif;
 }
 
 a {
   text-decoration: none;
+  color: black;
+  &:hover {
+    color:gray;
+  }
 }
 
 .App__header {
@@ -20,10 +25,13 @@ a {
   flex-flow: column;
   justify-content: center;
   align-items: center;
+
 }
 
 .App__header--title {
   text-transform: capitalize;
+  font-family: 'Raleway Dots', cursive;
+  font-size: 50px;
   
 }
 

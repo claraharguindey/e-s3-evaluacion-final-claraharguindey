@@ -10,11 +10,11 @@ class CharacterCard extends Component {
     return (
       <React.Fragment>
           <Link to={`/character/${id}`}>
-        <li className="main__list--item">    
-            <h2 className="list__item--title">{name}</h2>
-            <img src={image} alt={name} className="list__item--img" />
-            <div>{house}</div>
-        </li>
+            <li className="main__list--item">    
+                <h2 className="list__item--title">{name}</h2>
+                <img src={image} alt={name} className="list__item--img" />
+                <div>{house || "X"}</div>
+            </li>
         </Link>
       </React.Fragment>);
   }

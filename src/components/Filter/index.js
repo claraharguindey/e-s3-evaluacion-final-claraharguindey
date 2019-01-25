@@ -11,7 +11,7 @@ class Filter extends Component {
           id="query"
           type="text"
           onChange={this.props.getUserSearch}
-          placeholder="Ex: Harry Potter"
+          placeholder="insert a character"
           value={this.props.query}
         />
       </label>);

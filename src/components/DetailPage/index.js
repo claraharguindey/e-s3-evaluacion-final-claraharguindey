@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import './DetailPage.scss';
 import PropTypes from "prop-types";
 
