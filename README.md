@@ -7,5 +7,5 @@
 
 This website was built with ReactJS magic.
 <p align="center">
-![](https://i.gifer.com/GCrD.gif)
+<img src="https://i.gifer.com/GCrD.gif"/>
 </p>
