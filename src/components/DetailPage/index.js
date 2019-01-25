@@ -17,9 +17,10 @@ class DetailPage extends Component {
     }
 
     render() {
-        const { name, image, house, yearOfBirth, patronus } = this.props.character;       
+
+        const { character } = this.props;       
         
-        if(!this.props.character){
+        if(!character){
             return <p>Loading...</p>
         } else {
         return (
@@ -27,18 +28,18 @@ class DetailPage extends Component {
                 <Link to="/">
                 Go back
                 </Link>
-                <h1>{name}</h1>
-                <img src={image} alt={name} />
-                <div>Casa: {house}</div>
-                <div>Nacimiento: {yearOfBirth}</div>
-                <div>Patronus: {patronus}</div>
+                <h1>{character.name}</h1>
+                <img src={character.image} alt={character.name} />
+                <div>Casa: {character.house}</div>
+                <div>Nacimiento: {character.yearOfBirth}</div>
+                <div>Patronus: {character.patronus}</div>
                 <div>Estado: {this.characterState()}</div>
             </div>
         );}}
     }
 
 DetailPage.propTypes = {
-    character: PropTypes.object.isRequired
+    character: PropTypes.object
 }
 
 export default DetailPage;
