@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CharacterCard from '../CharacterCard';
 import PropTypes from "prop-types";
+import './CharacterList.scss';
 
 class CharacterList extends Component {
 
@@ -8,10 +9,10 @@ class CharacterList extends Component {
     const { loading, filteredResults} = this.props;
     
     if (loading) {
-      return <p>Loading...</p>
+      return <div className="loader">Loading...</div>
     }
     else {
-      return (<ul>
+      return (<ul className="main__list">
         {filteredResults.map(character => {
           return (
             <CharacterCard character={character} key={character.id} />)

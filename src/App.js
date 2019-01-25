@@ -72,8 +72,8 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
-          <h1>Harry Potter Characters</h1>
+        <header className="App__header">
+          <h1 className="App__header--title">Harry Potter characters</h1>
           <Switch>
             <Route
               exact

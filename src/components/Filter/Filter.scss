@@ -1,0 +1,10 @@
+.App__header--input {
+    border: 0px;
+    height: 40px;
+    padding: 0px 90px;
+    text-align: center;
+    font-style: italic;
+    &:hover {
+        transform: translateY(0);
+        box-shadow: 0 5px 25px 0px #0d0c14;}
+}

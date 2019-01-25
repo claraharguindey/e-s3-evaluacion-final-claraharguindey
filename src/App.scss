@@ -1,4 +1,37 @@
 .App {
-  text-align: center;
+  margin: 0px;
+  padding: 0px;
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
 }
+
+.App__header {
+  padding: 30px;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.App__header--title {
+  text-transform: capitalize;
+}
+
+@keyframes gradient {
+0% {
+  background-position: 0% 50%
+}
+50% {
+  background-position: 100% 50%
+}
+100% {
+  background-position: 0% 50%
+}
+}
+
+
+
 
