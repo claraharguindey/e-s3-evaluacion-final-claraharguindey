@@ -5,15 +5,23 @@ import PropTypes from "prop-types";
 class DetailPage extends Component {
     
     characterState(){
+        
         const { character } = this.props;
-        return character.alive
-        ? 'vivo'
-        : "💀";
+        if (!character){
+            return <p>Loading...</p>
+        } else {
+            return character.alive
+            ? 'vivo'
+            : "💀";
+        }
     }
 
     render() {
         const { name, image, house, yearOfBirth, patronus } = this.props.character;       
-
+        
+        if(!this.props.character){
+            return <p>Loading...</p>
+        } else {
         return (
             <div>
                 <Link to="/">
@@ -26,7 +34,7 @@ class DetailPage extends Component {
                 <div>Patronus: {patronus}</div>
                 <div>Estado: {this.characterState()}</div>
             </div>
-        );}
+        );}}
     }
 
 DetailPage.propTypes = {
