@@ -82,7 +82,7 @@ class App extends Component {
                 return (
                   <Filter getUserSearch={this.getUserSearch} />)
               }}
-              />
+            />
           </Switch>
         </header>
         <main>
@@ -94,11 +94,11 @@ class App extends Component {
               render={() => {
                 return (
                   <CharacterList
-                    filteredResults={filteredResults} 
+                    filteredResults={filteredResults}
                     loading={loading}
                   />)
-              }} 
-              />
+              }}
+            />
 
             <Route
               path="/character/:id"
@@ -107,8 +107,8 @@ class App extends Component {
                   .find(character => character.id === parseInt(props.match.params.id))
                 return (
                   <DetailPage character={currentCharacter} />)
-              }} 
-              />
+              }}
+            />
 
           </Switch>
         </main>

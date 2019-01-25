@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 class CharacterCard extends Component {
   render() {
     const { id, name, image, house } = this.props.character;
+    
     return (
       <React.Fragment>
         <li>

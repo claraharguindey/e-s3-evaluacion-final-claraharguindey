@@ -1,42 +1,42 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from "prop-types";
 
 class DetailPage extends Component {
-    
-    characterState(){
-        
+
+    characterState() {
         const { character } = this.props;
-        if (!character){
+        if (!character) {
             return <p>Loading...</p>
         } else {
             return character.alive
-            ? <span>vivo</span>
-            : <span role="img" aria-label="die">💀</span>;
+                ? <span>vivo</span>
+                : <span role="img" aria-label="die">💀</span>;
         }
     }
 
     render() {
+        const { character } = this.props;
 
-        const { character } = this.props;       
-        
-        if(!character){
+        if (!character) {
             return <p>Loading...</p>
         } else {
-        return (
-            <div>
-                <Link to="/">
-                Go back
+            return (
+                <div>
+                    <Link to="/">
+                        Go back
                 </Link>
-                <h1>{character.name}</h1>
-                <img src={character.image} alt={character.name} />
-                <div>Casa: {character.house}</div>
-                <div>Nacimiento: {character.yearOfBirth}</div>
-                <div>Patronus: {character.patronus}</div>
-                <div>Estado: {this.characterState()}</div>
-            </div>
-        );}}
+                    <h1>{character.name}</h1>
+                    <img src={character.image} alt={character.name} />
+                    <div>Casa: {character.house}</div>
+                    <div>Nacimiento: {character.yearOfBirth}</div>
+                    <div>Patronus: {character.patronus}</div>
+                    <div>Estado: {this.characterState()}</div>
+                </div>
+            );
+        }
     }
+}
 
 DetailPage.propTypes = {
     character: PropTypes.object
