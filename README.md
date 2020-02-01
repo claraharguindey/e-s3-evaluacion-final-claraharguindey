@@ -1,7 +1,6 @@
 
 
 ## Harry Potter App
-## ⚡️ http://beta.adalab.es/e-s3-evaluacion-final-claraharguindey/#/ ⚡️ 
 
 ### Find your favorites characters
 
@@ -13,7 +12,6 @@ This website was built with ReactJS and it works thanks to this open API 👉 ht
 
 
 ## App de Harry Potter
-## ⚡️ http://beta.adalab.es/e-s3-evaluacion-final-claraharguindey/#/ ⚡️ 
 
 ### Encuentra tus personajes favoritos
 
