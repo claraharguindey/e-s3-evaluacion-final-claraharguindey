@@ -21,3 +21,4 @@ He desarrollado esta website usando ReactJS. Funciona gracias a esta API 👉 ht
 <p align="center">
 ✨👩🏻‍💻✨
 </p>
+ *not responsive(yet)*

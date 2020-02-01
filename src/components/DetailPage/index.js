@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 class DetailPage extends Component {
     characterState() {
         const { character } = this.props;
+        
         if (!character) {
             return <p>Loading...</p>;
         } else {

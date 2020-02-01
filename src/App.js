@@ -12,10 +12,12 @@ class App extends Component {
     this.state = {
       characters: this.setCharacters(),
       query: "",
+      queryHouses: "",
       loading: true
     };
     this.getUserSearch = this.getUserSearch.bind(this);
     this.filterCharacters = this.filterCharacters.bind(this);
+    this.getUserSearchHouses = this.getUserSearchHouses.bind(this);
   }
 
   setCharacters() {
@@ -51,7 +53,13 @@ class App extends Component {
     this.setState({
       query: userQuery
     });
-    this.filterCharacters();
+  }
+
+  getUserSearchHouses(event) {
+    const userQueryHouses = event.target.value;
+    this.setState({
+      queryHouses: userQueryHouses
+    });
   }
 
   filterCharacters() {
@@ -66,23 +74,43 @@ class App extends Component {
     return filteredCharacters;
   }
 
+  filterCharactersByHouse() {
+    const { characters, queryHouses } = this.state;
+    if (queryHouses === "no") {
+      return characters.filter(character =>  character.house === "" )
+    } else {
+      return characters.filter(character => {
+        const characterName = character.house;
+        return characterName.toLowerCase().includes(queryHouses.toLowerCase())
+          ? true
+          : false;
+      })
+    }
+  }
+
   render() {
-    const filteredResults = this.filterCharacters();
-    const { loading, query } = this.state;
+    const filteredResults = this.filterCharactersByHouse();
+    const { loading, query, queryHouses } = this.state;
 
     return (
       <div className="App">
         <header className="App__header">
-        <Link to="/">
-          <h1 className="App__header--title">Harry Potter characters</h1>
-        </Link>
+          <Link to="/">
+            <h1 className="App__header--title">Harry Potter characters</h1>
+          </Link>
+          
           <Switch>
             <Route
               exact
               path="/"
               render={() => {
                 return (
-                  <Filter getUserSearch={this.getUserSearch} query={query} />)
+                  <Filter
+                    getUserSearch={this.getUserSearch}
+                    query={query}
+                    queryHouses={queryHouses}
+                    getUserSearchHouses={this.getUserSearchHouses}
+                  />)
               }}
             />
           </Switch>
@@ -108,7 +136,9 @@ class App extends Component {
                 const currentCharacter = filteredResults
                   .find(character => character.id === parseInt(props.match.params.id))
                 return (
-                  <DetailPage character={currentCharacter} />)
+                  <DetailPage
+                    character={currentCharacter}
+                  />)
               }}
             />
 

@@ -5,7 +5,8 @@ import './Filter.scss';
 class Filter extends Component {
   render() {
     return (
-      <label htmlFor="query">
+      <React.Fragment>
+      <label htmlFor="query"> 
         <input
           className="App__header--input"
           id="query"
@@ -14,7 +15,20 @@ class Filter extends Component {
           placeholder="insert a character"
           value={this.props.query}
         />
-      </label>);
+      </label>
+      
+      <label htmlFor="query">
+      <input
+        className="App__header--input"
+        id="query"
+        type="text"
+        onChange={this.props.getUserSearchHouses}
+        placeholder="insert a house"
+        value={this.props.queryHouses}
+      />
+    </label>
+    </React.Fragment>
+      );
   }
 }
 

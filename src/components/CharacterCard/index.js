@@ -15,7 +15,7 @@ class CharacterCard extends Component {
                 <img src={image} alt={name} className="list__item--img" />
                 <div>{house || "X"}</div>
             </li>
-        </Link>
+          </Link>
       </React.Fragment>);
   }
 }
